@@ -8,7 +8,7 @@ import { ParticleField } from '../3d/ParticleField';
 export const ComputerPortfolio = () => {
   const [isComputerActive, setIsComputerActive] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [screenContent, setScreenContent] = useState("Click to boot system...");
+  const [screenContent, setScreenContent] = useState("PORTFOLIO OS v1.0\n\nClick screen to boot system\n\n> Power button located\n  on right side of monitor");
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -29,9 +29,9 @@ export const ComputerPortfolio = () => {
   const handleScreenClick = () => {
     if (!isComputerActive) {
       setIsComputerActive(true);
-      setScreenContent("PORTFOLIO OS LOADING...");
+      setScreenContent("PORTFOLIO OS v1.0\n\nBOOTING SYSTEM...\n\n> Loading desktop environment\n> Initializing applications\n> System ready!");
       setTimeout(() => {
-        setScreenContent("SYSTEM READY");
+        setScreenContent("PORTFOLIO OS v1.0\n\nSYSTEM READY\n\nDouble-click desktop icons\nto open applications");
       }, 2000);
     }
   };
@@ -45,13 +45,13 @@ export const ComputerPortfolio = () => {
   const handleSectionChange = (section: string | null) => {
     setActiveSection(section);
     if (section) {
-      setScreenContent(`Loading ${section.toUpperCase()}...`);
+      setScreenContent(`OPENING ${section.toUpperCase()}.exe\n\nLoading application...\nPlease wait...`);
     } else {
       setIsComputerActive(false);
-      setScreenContent("Shutting down...");
+      setScreenContent("SHUTTING DOWN...\n\nClosing applications\nSaving data\nPowering off");
       setTimeout(() => {
-        setScreenContent("Click to boot system...");
-      }, 1000);
+        setScreenContent("PORTFOLIO OS v1.0\n\nClick screen to boot system");
+      }, 1500);
     }
   };
 
@@ -99,7 +99,7 @@ export const ComputerPortfolio = () => {
             maxPolarAngle={Math.PI / 2.2}
             minPolarAngle={Math.PI / 6}
             autoRotate={!isComputerActive}
-            autoRotateSpeed={0.5}
+            autoRotateSpeed={0.3}
           />
         </Canvas>
       </div>
